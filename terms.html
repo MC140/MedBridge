@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — MedBridge Healthcare Concierge Inc.</title>
+  <meta name="description" content="MedBridge Healthcare Concierge Inc. Website Terms of Service governing use of medbridge.ca.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+```
+:root {
+  --navy: #0B1F3A;
+  --navy-light: #122848;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+  --white: #FFFFFF;
+  --off-white: #F8F7F4;
+  --grey-light: #F2F4F7;
+  --grey-mid: #E2E6ED;
+  --grey-text: #6B7280;
+  --body-text: #2D3748;
+  --max-w: 800px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--off-white);
+  color: var(--body-text);
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+nav {
+  background: var(--navy);
+  padding: 18px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.nav-brand { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.2rem; font-weight: 700; letter-spacing: 0.02em; text-decoration: none; }
+.nav-brand span { color: var(--gold); }
+.nav-back { color: var(--gold); text-decoration: none; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+.nav-back:hover { color: var(--gold-light); }
+
+.hero {
+  background: var(--navy);
+  padding: 64px 40px 56px;
+  text-align: center;
+  border-bottom: 4px solid var(--gold);
+}
+.hero-label { display: inline-block; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; padding: 6px 16px; border-radius: 2px; margin-bottom: 20px; }
+.hero h1 { font-family: 'Playfair Display', serif; color: var(--white); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 16px; }
+.hero-sub { color: rgba(255,255,255,0.65); font-size: 0.95rem; max-width: 520px; margin: 0 auto 28px; }
+.hero-meta { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; }
+.hero-meta-item { color: rgba(255,255,255,0.5); font-size: 0.8rem; letter-spacing: 0.05em; }
+.hero-meta-item strong { color: var(--gold); display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+
+.page-wrap { max-width: var(--max-w); margin: 0 auto; padding: 60px 24px 100px; }
+
+.section { margin-bottom: 52px; opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.section.visible { opacity: 1; transform: translateY(0); }
+.section-number { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.section h2 { font-family: 'Playfair Display', serif; font-size: 1.55rem; font-weight: 700; color: var(--navy); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--gold); }
+.section h3 { font-family: 'Lato', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-top: 24px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
+.section p { color: var(--body-text); margin-bottom: 14px; font-size: 0.97rem; }
+
+.section ul { list-style: none; margin: 12px 0 18px 0; }
+.section ul li { padding: 7px 0 7px 24px; position: relative; font-size: 0.96rem; border-bottom: 1px solid var(--grey-mid); }
+.section ul li:last-child { border-bottom: none; }
+.section ul li::before { content: ''; position: absolute; left: 0; top: 16px; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
+
+.toc { background: var(--white); border: 1px solid var(--grey-mid); border-top: 3px solid var(--navy); padding: 28px 32px; margin-bottom: 52px; border-radius: 3px; }
+.toc-title { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); font-weight: 700; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.06em; }
+.toc ol { counter-reset: toc; list-style: none; columns: 2; column-gap: 24px; }
+@media (max-width: 540px) { .toc ol { columns: 1; } }
+.toc ol li { counter-increment: toc; padding: 5px 0; font-size: 0.88rem; }
+.toc ol li a { color: var(--body-text); text-decoration: none; transition: color 0.2s; }
+.toc ol li a:hover { color: var(--gold); }
+.toc ol li a::before { content: counter(toc) ". "; color: var(--gold); font-weight: 700; font-size: 0.8rem; }
+
+.alert { background: var(--grey-light); border-left: 4px solid var(--navy); padding: 16px 20px; border-radius: 2px; margin: 20px 0; font-size: 0.93rem; color: var(--body-text); font-style: italic; }
+.alert.warning { background: #FFF8E1; border-left-color: #F59E0B; }
+.alert.caps { font-style: normal; font-weight: 700; font-size: 0.88rem; color: var(--navy); letter-spacing: 0.01em; }
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+@media (max-width: 580px) { .info-grid { grid-template-columns: 1fr; } }
+.info-card { background: var(--white); border: 1px solid var(--grey-mid); border-left: 3px solid var(--gold); padding: 14px 16px; border-radius: 3px; }
+.info-card-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.info-card-value { font-size: 0.93rem; color: var(--navy); }
+
+.contact-block { background: var(--navy); padding: 28px 32px; border-radius: 4px; margin-top: 20px; }
+.contact-block p { color: rgba(255,255,255,0.75); margin-bottom: 6px; font-size: 0.93rem; }
+.contact-block a { color: var(--gold); text-decoration: none; }
+.contact-block a:hover { color: var(--gold-light); text-decoration: underline; }
+
+.progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); z-index: 200; width: 0%; transition: width 0.1s linear; }
+
+footer { background: var(--navy); border-top: 3px solid var(--gold); padding: 40px; text-align: center; }
+footer p { color: rgba(255,255,255,0.45); font-size: 0.82rem; margin-bottom: 6px; }
+footer a { color: var(--gold); text-decoration: none; }
+.footer-brand { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+
+.divider { border: none; border-top: 1px solid var(--grey-mid); margin: 32px 0; }
+```
+
+  </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<nav>
+  <a href="/" class="nav-brand">Med<span>Bridge</span></a>
+  <a href="/" class="nav-back">← Back to Website</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-label">Legal Document</div>
+  <h1>Terms of Service</h1>
+  <p class="hero-sub">Governing your use of medbridge.ca and MedBridge's online services</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><strong>Effective Date</strong>March 2026</div>
+    <div class="hero-meta-item"><strong>Jurisdiction</strong>Ontario, Canada</div>
+    <div class="hero-meta-item"><strong>Applies To</strong>medbridge.ca</div>
+    <div class="hero-meta-item"><strong>Questions</strong>consult@medbridge.ca</div>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+    <ol>
+      <li><a href="#s1">Acceptance of Terms</a></li>
+      <li><a href="#s2">About MedBridge</a></li>
+      <li><a href="#s3">Permitted and Prohibited Use</a></li>
+      <li><a href="#s4">No Medical Advice</a></li>
+      <li><a href="#s5">Consultation Form</a></li>
+      <li><a href="#s6">Intellectual Property</a></li>
+      <li><a href="#s7">Third-Party Links</a></li>
+      <li><a href="#s8">Privacy</a></li>
+      <li><a href="#s9">Disclaimer of Warranties</a></li>
+      <li><a href="#s10">Limitation of Liability</a></li>
+      <li><a href="#s11">Indemnification</a></li>
+      <li><a href="#s12">Governing Law</a></li>
+      <li><a href="#s13">Severability & Waiver</a></li>
+      <li><a href="#s14">Entire Agreement</a></li>
+      <li><a href="#s15">Changes to Terms</a></li>
+      <li><a href="#s16">Contact</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+
+  <div class="section" id="s1">
+    <div class="section-number">Section 01</div>
+    <h2>Acceptance of Terms</h2>
+    <p>By accessing or using the website located at medbridge.ca (the "Website"), you ("User," "you") agree to be legally bound by these Terms of Service ("Terms"). If you do not agree to these Terms in their entirety, you must immediately cease using the Website.</p>
+    <p>These Terms apply to all visitors, users, and others who access or use the Website, regardless of whether they subsequently engage MedBridge's concierge services.</p>
+    <p>MedBridge Healthcare Concierge Inc. reserves the right to update these Terms at any time. Continued use of the Website after changes are posted constitutes acceptance of the updated Terms.</p>
+  </div>
+
+  <!-- 2 -->
+
+  <div class="section" id="s2">
+    <div class="section-number">Section 02</div>
+    <h2>About MedBridge</h2>
+    <p>MedBridge Healthcare Concierge Inc. ("MedBridge," "we," "us") is a corporation registered in Ontario, Canada, providing medical tourism concierge and coordination services. <strong>MedBridge is not a hospital, clinic, medical facility, or healthcare provider of any kind.</strong></p>
+    <p>All information presented on this Website is provided for general informational purposes only. It does not constitute, and must not be construed as, medical advice. Medical decisions must be made in consultation with qualified, licensed healthcare professionals.</p>
+  </div>
+
+  <!-- 3 -->
+
+  <div class="section" id="s3">
+    <div class="section-number">Section 03</div>
+    <h2>Permitted and Prohibited Use</h2>
+    <h3>Permitted Use</h3>
+    <p>You may use the Website for lawful purposes, including to learn about MedBridge's services, research medical tourism, submit an inquiry, and communicate with MedBridge about potential or existing service engagements.</p>
+    <h3>Prohibited Use</h3>
+    <p>You must not use the Website to:</p>
+    <ul>
+      <li>Violate any applicable federal, provincial, state, or local law or regulation</li>
+      <li>Submit false, misleading, fraudulent, or fabricated information through any Website form</li>
+      <li>Impersonate any person or entity, or misrepresent your affiliation with any party</li>
+      <li>Attempt to gain unauthorized access to any portion of the Website or its systems</li>
+      <li>Deploy automated bots, scrapers, or crawlers to extract information from the Website</li>
+      <li>Transmit malware, viruses, trojans, ransomware, or any other malicious code</li>
+      <li>Use the Website in any manner that could damage, disable, or impair its operation</li>
+      <li>Reproduce, distribute, or sell Website content without MedBridge's prior written consent</li>
+    </ul>
+  </div>
+
+  <!-- 4 -->
+
+  <div class="section" id="s4">
+    <div class="section-number">Section 04</div>
+    <h2>No Medical Advice</h2>
+    <div class="alert warning caps">NOTHING ON THIS WEBSITE CONSTITUTES MEDICAL ADVICE. Information regarding procedures, hospitals, surgeons, costs, recovery timelines, and outcomes is provided for general informational purposes only. You must consult a qualified, licensed physician before making any decision about medical procedures or medical travel.</div>
+    <p>MedBridge's concierge services do not replace, supplement, or substitute for professional medical judgment. The decision to undergo any medical procedure is solely yours to make in consultation with your physician.</p>
+    <p>MedBridge strongly recommends that all prospective patients:</p>
+    <ul>
+      <li>Discuss the proposed procedure with their domestic physician before engaging MedBridge's services</li>
+      <li>Obtain a second medical opinion if the procedure is complex, elective, or carries significant risk</li>
+      <li>Review all surgeon credentials and hospital accreditation materials before making any decision</li>
+      <li>Consult with a legal professional regarding the implications of receiving medical care in a foreign jurisdiction</li>
+    </ul>
+  </div>
+
+  <!-- 5 -->
+
+  <div class="section" id="s5">
+    <div class="section-number">Section 05</div>
+    <h2>Consultation Form and Inquiries</h2>
+    <p>By submitting MedBridge's online consultation or assessment form, you:</p>
+    <ul>
+      <li>Consent to MedBridge contacting you by email or telephone within 24 business hours</li>
+      <li>Consent to MedBridge collecting, storing, and using the information you provide in accordance with our <a href="/privacy" style="color:var(--gold)">Privacy Policy</a></li>
+      <li>Acknowledge that submission does not create a service agreement or any binding obligation between parties</li>
+      <li>Represent that all information you provide is accurate and truthful to the best of your knowledge</li>
+      <li>Understand that MedBridge may decline to provide services to any prospective patient at its sole discretion</li>
+    </ul>
+  </div>
+
+  <!-- 6 -->
+
+  <div class="section" id="s6">
+    <div class="section-number">Section 06</div>
+    <h2>Intellectual Property</h2>
+    <p>All content on this Website — including text, graphics, logos, design elements, layout, illustrations, and underlying code — is the proprietary property of MedBridge Healthcare Concierge Inc. and is protected by applicable Canadian copyright, trademark, and intellectual property law.</p>
+    <p>You are granted a limited, non-exclusive, non-transferable, revocable licence to access and view Website content for your personal, non-commercial use only. This licence does not permit you to copy, reproduce, distribute, sell, or create derivative works from Website content without MedBridge's prior written consent.</p>
+  </div>
+
+  <!-- 7 -->
+
+  <div class="section" id="s7">
+    <div class="section-number">Section 07</div>
+    <h2>Third-Party Links and Content</h2>
+    <p>The Website may contain links to third-party websites, including the Joint Commission International verification portal, hospital websites, and other external resources. These links are provided solely for your convenience.</p>
+    <p>MedBridge does not control, endorse, or take responsibility for the content, accuracy, or privacy practices of any third-party website. Your use of third-party sites is at your own risk and subject to the terms of those sites.</p>
+  </div>
+
+  <!-- 8 -->
+
+  <div class="section" id="s8">
+    <div class="section-number">Section 08</div>
+    <h2>Privacy</h2>
+    <p>Your use of this Website is subject to MedBridge's Privacy Policy, which is incorporated into these Terms by reference. By using the Website and submitting any personal information, you consent to the collection, use, and disclosure of your information as described in the Privacy Policy.</p>
+    <p>Read the full Privacy Policy at: <a href="/privacy" style="color:var(--gold); font-weight:700">medbridge.ca/privacy</a></p>
+  </div>
+
+  <!-- 9 -->
+
+  <div class="section" id="s9">
+    <div class="section-number">Section 09</div>
+    <h2>Disclaimer of Warranties</h2>
+    <div class="alert caps">THE WEBSITE AND ALL CONTENT ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT ANY WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.</div>
+    <p>MedBridge does not warrant that the Website will be available continuously, error-free, or free from viruses or harmful components, or that information on the Website is accurate, complete, or current.</p>
+    <p>MedBridge disclaims all representations and warranties to the fullest extent permitted by the laws of Ontario and Canada.</p>
+  </div>
+
+  <!-- 10 -->
+
+  <div class="section" id="s10">
+    <div class="section-number">Section 10</div>
+    <h2>Limitation of Liability</h2>
+    <div class="alert caps">TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, MEDBRIDGE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF, OR INABILITY TO USE, THE WEBSITE.</div>
+    <p>MedBridge's aggregate maximum liability for any claim arising from your use of this Website (excluding claims under a signed Patient Service Agreement) shall not exceed <strong>one hundred Canadian dollars (CAD $100.00)</strong>.</p>
+    <div class="alert">Note: The above limitations do not affect obligations MedBridge assumes under a signed Patient Service Agreement, which is governed by separate terms.</div>
+  </div>
+
+  <!-- 11 -->
+
+  <div class="section" id="s11">
+    <div class="section-number">Section 11</div>
+    <h2>Indemnification</h2>
+    <p>You agree to defend, indemnify, and hold harmless MedBridge Healthcare Concierge Inc. and its directors, officers, employees, and agents from any claims, damages, losses, and expenses (including reasonable legal fees) arising from:</p>
+    <ul>
+      <li>Your use of the Website in violation of these Terms</li>
+      <li>Your submission of false or misleading information through the Website</li>
+      <li>Your violation of any applicable law or third-party rights in connection with Website use</li>
+      <li>Your infringement of any third-party intellectual property or privacy rights</li>
+    </ul>
+  </div>
+
+  <!-- 12 -->
+
+  <div class="section" id="s12">
+    <div class="section-number">Section 12</div>
+    <h2>Governing Law and Dispute Resolution</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of the Province of Ontario and the federal laws of Canada applicable therein, without regard to conflict of law principles.</p>
+    <p>Disputes that cannot be resolved by good-faith negotiation within 30 days shall be submitted to binding arbitration administered by the <strong>ADR Institute of Ontario</strong> in accordance with its National Arbitration Rules. The seat of arbitration shall be Toronto, Ontario. The language of arbitration shall be English.</p>
+    <p>MedBridge reserves the right to seek injunctive or other equitable relief in any court of competent jurisdiction to protect its intellectual property or confidential information.</p>
+    <div class="info-grid">
+      <div class="info-card"><div class="info-card-label">Governing Law</div><div class="info-card-value">Province of Ontario, Canada</div></div>
+      <div class="info-card"><div class="info-card-label">Arbitration Body</div><div class="info-card-value">ADR Institute of Ontario</div></div>
+      <div class="info-card"><div class="info-card-label">Seat of Arbitration</div><div class="info-card-value">Toronto, Ontario</div></div>
+      <div class="info-card"><div class="info-card-label">Language</div><div class="info-card-value">English</div></div>
+    </div>
+  </div>
+
+  <!-- 13 -->
+
+  <div class="section" id="s13">
+    <div class="section-number">Section 13</div>
+    <h2>Severability and Waiver</h2>
+    <p>If any provision of these Terms is found to be invalid or unenforceable, that provision shall be modified to the minimum extent necessary or severed, and the remaining provisions shall continue in full force and effect.</p>
+    <p>MedBridge's failure to enforce any right under these Terms shall not constitute a waiver of that right or any subsequent breach.</p>
+  </div>
+
+  <!-- 14 -->
+
+  <div class="section" id="s14">
+    <div class="section-number">Section 14</div>
+    <h2>Entire Agreement</h2>
+    <p>These Terms, together with MedBridge's Privacy Policy, constitute the entire agreement between you and MedBridge with respect to your use of the Website. They supersede all prior and contemporaneous understandings regarding Website use.</p>
+    <p>For patients who execute a Patient Service Agreement, the Service Agreement and its schedules govern the service relationship and take precedence over these Terms in the event of any conflict.</p>
+  </div>
+
+  <!-- 15 -->
+
+  <div class="section" id="s15">
+    <div class="section-number">Section 15</div>
+    <h2>Changes to These Terms</h2>
+    <p>MedBridge may update these Terms periodically. Updated Terms will be posted on this page with a revised effective date. Continued use of the Website after changes are posted constitutes your acceptance of the updated Terms. If you do not agree to the revised Terms, you must stop using the Website.</p>
+  </div>
+
+  <!-- 16 -->
+
+  <div class="section" id="s16">
+    <div class="section-number">Section 16</div>
+    <h2>Contact</h2>
+    <p>For questions about these Terms of Service:</p>
+    <div class="contact-block">
+      <p><strong style="color:white">MedBridge Healthcare Concierge Inc.</strong></p>
+      <p>General Inquiries: <a href="mailto:consult@medbridge.ca">consult@medbridge.ca</a></p>
+      <p>Privacy Questions: <a href="mailto:privacy@medbridge.ca">privacy@medbridge.ca</a></p>
+      <p>Website: <a href="https://medbridge.ca">medbridge.ca</a></p>
+      <p>Toronto, Ontario, Canada</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-brand">MedBridge Healthcare Concierge Inc.</div>
+  <p>MedBridge is not a medical provider. Coordination services only.</p>
+  <p>Governed by the laws of the Province of Ontario, Canada.</p>
+  <p style="margin-top:16px"><a href="/privacy">Privacy Policy</a> &nbsp;|&nbsp; <a href="/">medbridge.ca</a> &nbsp;|&nbsp; <a href="mailto:consult@medbridge.ca">consult@medbridge.ca</a></p>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop / (doc.scrollHeight - doc.clientHeight);
+    document.getElementById('progress').style.width = (scrolled * 100) + '%';
+  });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
