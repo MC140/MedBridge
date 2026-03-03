@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedBridge Healthcare Concierge — World-Class Surgery. A Fraction of the Cost.</title>
+  <meta name="description" content="MedBridge connects Canadians and Americans with JCI-accredited hospitals in India. Save 70–80% on knee replacement, cardiac surgery, spinal surgery, and more. Ontario-registered. Fully verified.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── RESET & ROOT ─────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:       #0B1F3A;
+      --navy-mid:   #122848;
+      --navy-light: #1a3560;
+      --gold:       #C9A84C;
+      --gold-light: #E2C06A;
+      --gold-pale:  rgba(201,168,76,0.12);
+      --white:      #FFFFFF;
+      --off-white:  #F9F8F5;
+      --cream:      #F3F0E8;
+      --grey-light: #F2F4F7;
+      --grey-mid:   #DDE1E9;
+      --grey-text:  #6B7280;
+      --body:       #2D3748;
+      --green:      #2E7D52;
+      --red:        #C0392B;
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Lato', sans-serif; background: var(--white); color: var(--body); overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── UTILITY ──────────────────────────────────────────────────────────── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+    .gold { color: var(--gold); }
+    .serif { font-family: 'Playfair Display', serif; }
+
+    /* ─── SCROLL PROGRESS ──────────────────────────────────────────────────── */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: var(--gold); z-index: 9999; width: 0;
+      transition: width 0.08s linear;
+    }
+
+    /* ─── NAVBAR ───────────────────────────────────────────────────────────── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(11,31,58,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      transition: box-shadow 0.3s;
+    }
+    #navbar.scrolled { box-shadow: 0 4px 32px rgba(0,0,0,0.35); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; max-width: 1120px; margin: 0 auto; padding: 0 32px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--white); letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.72); font-size: 0.82rem;
+      font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy) !important;
+      padding: 10px 22px; border-radius: 2px;
+      font-weight: 900 !important; letter-spacing: 0.08em !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+    .nav-mobile-toggle {
+      display: none; background: none; border: none;
+      cursor: pointer; padding: 4px;
+    }
+    .nav-mobile-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); margin: 5px 0;
+      transition: all 0.3s;
+    }
+
+    /* ─── HERO ─────────────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding-top: 68px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
+    }
+    .hero-grid-lines {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      max-width: 1120px; margin: 0 auto; padding: 80px 32px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.35);
+      padding: 7px 16px; border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .hero-eyebrow-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+    .hero-eyebrow span { color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4vw, 3.6rem);
+      font-weight: 700; color: var(--white);
+      line-height: 1.15; margin-bottom: 24px;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      color: rgba(255,255,255,0.65); font-size: 1.05rem;
+      line-height: 1.7; margin-bottom: 40px; font-weight: 300;
+      max-width: 480px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      padding: 15px 32px; font-weight: 900; font-size: 0.88rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px; transition: all 0.2s; cursor: pointer;
+      border: none; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.8);
+      padding: 15px 32px; font-weight: 700; font-size: 0.88rem;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      border-radius: 2px; transition: all 0.2s; cursor: pointer;
+      background: transparent; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-trust { display: flex; gap: 28px; flex-wrap: wrap; }
+    .hero-trust-item { display: flex; align-items: center; gap: 8px; }
+    .hero-trust-item .dot { width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+    .hero-trust-item span { color: rgba(255,255,255,0.5); font-size: 0.78rem; letter-spacing: 0.06em; }
+
+    /* Cost comparison panel */
+    .hero-panel {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .panel-header {
+      background: rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 16px 24px;
+    }
+    .panel-header p {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold);
+    }
+    .panel-procedure-select {
+      display: flex; gap: 0; margin-top: 12px;
+    }
+    .proc-btn {
+      background: transparent; border: 1px solid rgba(201,168,76,0.25);
+      color: rgba(255,255,255,0.55); font-size: 0.72rem;
+      font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 7px 12px; cursor: pointer; transition: all 0.2s;
+      font-family: 'Lato', sans-serif;
+    }
+    .proc-btn:first-child { border-radius: 2px 0 0 2px; }
+    .proc-btn:last-child { border-radius: 0 2px 2px 0; }
+    .proc-btn.active { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+    .proc-btn:not(.active):hover { border-color: var(--gold); color: var(--gold); }
+    .panel-rows { padding: 8px 0; }
+    .panel-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.15s;
+    }
+    .panel-row:last-child { border-bottom: none; }
+    .panel-row:hover { background: rgba(255,255,255,0.03); }
+    .panel-row-label { color: rgba(255,255,255,0.55); font-size: 0.82rem; }
+    .panel-row-label .sub { font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 2px; }
+    .panel-row-value { font-weight: 700; font-size: 0.95rem; text-align: right; color: rgba(255,255,255,0.88); }
+    .panel-row-value.strike { color: var(--red); text-decoration: line-through; opacity: 0.7; font-size: 0.85rem; }
+    .panel-row-value.highlight {
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+    }
+    .panel-row.featured { background: rgba(201,168,76,0.07); border-left: 3px solid var(--gold); }
+    .panel-savings {
+      background: rgba(46,125,82,0.15); border-top: 1px solid rgba(46,125,82,0.3);
+      padding: 14px 24px; text-align: center;
+    }
+    .panel-savings span { color: #4CAF7D; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    /* ─── TRUST STRIP ──────────────────────────────────────────────────────── */
+    #trust-strip {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 28px 0;
+    }
+    .trust-strip-inner {
+      display: flex; justify-content: center; gap: 0;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; flex-direction: column; align-items: center;
+      padding: 12px 40px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--gold);
+      line-height: 1;
+    }
+    .trust-label { color: rgba(255,255,255,0.5); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; text-align: center; }
+
+    /* ─── SECTION BASE ─────────────────────────────────────────────────────── */
+    section { padding: 100px 0; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700; color: var(--navy);
+      line-height: 1.2; margin-bottom: 20px;
+    }
+    .section-title.light { color: var(--white); }
+    .section-sub {
+      font-size: 1.05rem; color: var(--grey-text);
+      line-height: 1.75; max-width: 560px;
+    }
+    .section-sub.light { color: rgba(255,255,255,0.6); }
+
+    /* fade-in animation */
+    .fade-in { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── FOR CANADIANS ────────────────────────────────────────────────────── */
+    #canadians { background: var(--off-white); }
+    #canadians .section-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .market-stat-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0;
+    }
+    .market-stat {
+      background: var(--white); border: 1px solid var(--grey-mid);
+      border-top: 3px solid var(--gold); padding: 20px;
+      border-radius: 2px;
+    }
+    .market-stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.9rem; font-weight: 700; color: var(--navy);
+    }
+    .market-stat-label { font-size: 0.78rem; color: var(--grey-text); margin-top: 4px; letter-spacing: 0.04em; }
+
+    .procedure-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .procedure-table th {
+      background: var(--navy); color: var(--gold);
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 12px 14px; text-align: left; font-weight: 700;
+    }
+    .procedure-table td { padding: 12px 14px; font-size: 0.88rem; border-bottom: 1px solid var(--grey-mid); }
+    .procedure-table tr:last-child td { border-bottom: none; }
+    .procedure-table tr:nth-child(even) td { background: var(--grey-light); }
+    .procedure-table .price-mb { color: var(--green); font-weight: 700; }
+
+    /* ─── FOR AMERICANS ────────────────────────────────────────────────────── */
+    #americans { background: var(--navy); }
+    #americans .section-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .hsa-box {
+      background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+      border-left: 4px solid var(--gold); padding: 20px 24px; border-radius: 2px; margin-top: 24px;
+    }
+    .hsa-box-title { color: var(--gold); font-weight: 700; font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .hsa-box p { color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.65; }
+    .benefit-list { list-style: none; margin-top: 24px; }
+    .benefit-list li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .benefit-list li:last-child { border-bottom: none; }
+    .benefit-icon {
+      width: 28px; height: 28px; background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3); border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 0.75rem; color: var(--gold);
+    }
+    .benefit-text { color: rgba(255,255,255,0.65); font-size: 0.93rem; line-height: 1.6; }
+    .benefit-text strong { color: var(--white); display: block; margin-bottom: 2px; }
+
+    /* ─── VERIFICATION ─────────────────────────────────────────────────────── */
+    #verification { background: var(--white); }
+    .verification-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+    .verify-card {
+      border: 1px solid var(--grey-mid); padding: 32px 28px; border-radius: 2px;
+      transition: box-shadow 0.25s, border-color 0.25s;
+    }
+    .verify-card:hover { border-color: var(--gold); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+    .verify-card-number {
+      font-family: 'Playfair Display', serif; font-size: 2.4rem;
+      font-weight: 700; color: var(--gold); opacity: 0.4; line-height: 1;
+      margin-bottom: 16px;
+    }
+    .verify-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .verify-card p { font-size: 0.88rem; color: var(--grey-text); line-height: 1.65; }
+    .jci-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 40px; padding: 13px 24px;
+      border: 1px solid var(--gold); color: var(--gold);
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 2px; transition: all 0.2s;
+    }
+    .jci-link:hover { background: var(--gold); color: var(--navy); }
+    .jci-link svg { width: 14px; height: 14px; transition: transform 0.2s; }
+    .jci-link:hover svg { transform: translateX(3px); }
+    .transparency-box {
+      background: var(--navy); padding: 40px 48px; margin-top: 56px; border-radius: 3px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    }
+    .transparency-box h3 {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .transparency-box p { color: rgba(255,255,255,0.55); font-size: 0.93rem; line-height: 1.7; }
+    .transparency-list { list-style: none; }
+    .transparency-list li {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.65); font-size: 0.88rem;
+    }
+    .transparency-list li:last-child { border-bottom: none; }
+    .transparency-list li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+    /* ─── HOW IT WORKS ─────────────────────────────────────────────────────── */
+    #how-it-works { background: var(--off-white); }
+    .steps-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; margin-top: 56px; position: relative; }
+    .steps-grid::before {
+      content: ''; position: absolute;
+      top: 32px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.4;
+    }
+    .step-card { padding: 0 24px; position: relative; }
+    .step-number {
+      width: 64px; height: 64px; background: var(--navy);
+      border: 2px solid var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif; font-size: 1.4rem;
+      font-weight: 700; color: var(--gold);
+      margin-bottom: 24px; position: relative; z-index: 2;
+    }
+    .step-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .step-card p { font-size: 0.87rem; color: var(--grey-text); line-height: 1.65; }
+    .step-timeline {
+      display: inline-block; margin-top: 12px; padding: 4px 10px;
+      background: var(--gold-pale); border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 2px; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.08em; color: var(--gold); text-transform: uppercase;
+    }
+
+    /* ─── PRICING ──────────────────────────────────────────────────────────── */
+    #pricing { background: var(--white); }
+    .pricing-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; margin-top: 56px; align-items: start; }
+    .pricing-table { width: 100%; border-collapse: collapse; }
+    .pricing-table th {
+      background: var(--navy); color: var(--gold);
+      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 13px 16px; text-align: left;
+    }
+    .pricing-table td { padding: 12px 16px; font-size: 0.88rem; border-bottom: 1px solid var(--grey-mid); }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table tr:nth-child(even) td { background: var(--grey-light); }
+    .pricing-table .total-row td { background: var(--navy) !important; color: var(--white); font-weight: 700; }
+    .pricing-table .total-row .price-total { color: var(--gold); font-size: 1.05rem; font-family: 'Playfair Display', serif; }
+    .fee-cards { display: flex; flex-direction: column; gap: 16px; }
+    .fee-card {
+      border: 1px solid var(--grey-mid); padding: 20px 24px; border-radius: 2px;
+      transition: border-color 0.2s;
+    }
+    .fee-card:hover { border-color: var(--gold); }
+    .fee-card.featured { border-color: var(--gold); background: var(--gold-pale); }
+    .fee-card-tier { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .fee-card-price { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); }
+    .fee-card-desc { font-size: 0.82rem; color: var(--grey-text); margin-top: 4px; }
+    .payment-note {
+      background: var(--grey-light); border-left: 3px solid var(--navy);
+      padding: 14px 18px; margin-top: 20px; font-size: 0.85rem; color: var(--grey-text);
+    }
+    .payment-note strong { color: var(--navy); }
+
+    /* ─── FAQ ──────────────────────────────────────────────────────────────── */
+    #faq { background: var(--off-white); }
+    .faq-list { max-width: 760px; margin: 48px auto 0; }
+    .faq-item { border-bottom: 1px solid var(--grey-mid); }
+    .faq-question {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 22px 0; display: flex; justify-content: space-between;
+      align-items: center; cursor: pointer; gap: 16px;
+    }
+    .faq-question span {
+      font-size: 1rem; font-weight: 700; color: var(--navy); line-height: 1.4;
+      font-family: 'Lato', sans-serif;
+    }
+    .faq-icon {
+      width: 28px; height: 28px; border: 1px solid var(--grey-mid);
+      border-radius: 50%; flex-shrink: 0; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 1.1rem; color: var(--gold); transition: transform 0.3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--gold); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-answer-inner { padding: 0 0 20px; font-size: 0.95rem; color: var(--grey-text); line-height: 1.75; }
+
+    /* ─── CTA SECTION ──────────────────────────────────────────────────────── */
+    #cta {
+      background: var(--navy);
+      padding: 100px 0;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 100%, rgba(201,168,76,0.08), transparent);
+    }
+    .cta-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; padding: 0 32px; }
+    .cta-inner p { color: rgba(255,255,255,0.6); margin: 16px 0 36px; font-size: 1.05rem; line-height: 1.7; }
+
+    /* ─── MODAL ────────────────────────────────────────────────────────────── */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(5,12,24,0.88); backdrop-filter: blur(6px);
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white); max-width: 620px; width: 100%;
+      max-height: 90vh; overflow-y: auto; border-radius: 3px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .modal-header {
+      background: var(--navy); padding: 28px 36px;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      border-bottom: 3px solid var(--gold);
+    }
+    .modal-header h2 { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.4rem; }
+    .modal-header p { color: rgba(255,255,255,0.55); font-size: 0.83rem; margin-top: 4px; }
+    .modal-close {
+      background: none; border: none; color: rgba(255,255,255,0.5);
+      font-size: 1.4rem; cursor: pointer; padding: 4px; transition: color 0.2s;
+      line-height: 1;
+    }
+    .modal-close:hover { color: var(--gold); }
+    .modal-body { padding: 32px 36px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--navy); margin-bottom: 7px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 11px 14px;
+      border: 1px solid var(--grey-mid); border-radius: 2px;
+      font-family: 'Lato', sans-serif; font-size: 0.93rem;
+      color: var(--body); background: var(--white);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none; border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(11,31,58,0.1);
+    }
+    .form-group textarea { height: 90px; resize: vertical; }
+    .form-consent {
+      display: flex; gap: 12px; align-items: flex-start;
+      margin-bottom: 24px; font-size: 0.83rem; color: var(--grey-text); line-height: 1.55;
+    }
+    .form-consent input[type="checkbox"] { margin-top: 3px; flex-shrink: 0; accent-color: var(--navy); }
+    .form-consent a { color: var(--navy); text-decoration: underline; }
+    .form-submit {
+      width: 100%; background: var(--navy); color: var(--white);
+      border: none; padding: 15px; font-family: 'Lato', sans-serif;
+      font-weight: 900; font-size: 0.88rem; letter-spacing: 0.12em;
+      text-transform: uppercase; border-radius: 2px; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--navy-light); }
+    .form-note { text-align: center; margin-top: 14px; font-size: 0.78rem; color: var(--grey-text); }
+
+    /* ─── FOOTER ───────────────────────────────────────────────────────────── */
+    footer {
+      background: #060F1E;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+    .footer-main {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; padding: 72px 32px 56px;
+      max-width: 1120px; margin: 0 auto;
+    }
+    .footer-brand-col .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--white);
+      margin-bottom: 16px; display: inline-block;
+    }
+    .footer-brand-col .logo span { color: var(--gold); }
+    .footer-brand-col p { color: rgba(255,255,255,0.4); font-size: 0.85rem; line-height: 1.7; max-width: 280px; }
+    .footer-brand-col .reg-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 20px; padding: 8px 14px;
+      border: 1px solid rgba(201,168,76,0.25); border-radius: 2px;
+    }
+    .footer-brand-col .reg-badge span { color: rgba(255,255,255,0.4); font-size: 0.72rem; letter-spacing: 0.08em; }
+    .footer-brand-col .reg-badge strong { color: var(--gold); font-size: 0.72rem; letter-spacing: 0.08em; }
+    .footer-col-title {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.45); font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 24px 32px; max-width: 1120px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: gap;
+      gap: 16px;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.28); font-size: 0.78rem; }
+    .footer-legal-links { display: flex; gap: 24px; }
+    .footer-legal-links a {
+      color: rgba(255,255,255,0.35); font-size: 0.78rem;
+      transition: color 0.2s; text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .footer-legal-links a:hover { color: var(--gold); }
+    .not-medical {
+      color: rgba(255,255,255,0.22); font-size: 0.72rem;
+      max-width: 1120px; margin: 0 auto;
+      padding: 0 32px 20px; font-style: italic;
+    }
+
+    /* ─── RESPONSIVE ───────────────────────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      #canadians .section-inner,
+      #americans .section-inner,
+      .pricing-grid,
+      .transparency-box { grid-template-columns: 1fr; }
+      .verification-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .steps-grid::before { display: none; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      section { padding: 72px 0; }
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: block; }
+      .nav-links.mobile-open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 68px; left: 0; right: 0;
+        background: var(--navy); padding: 20px 24px; gap: 16px;
+        border-bottom: 2px solid var(--gold);
+      }
+      .verification-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .market-stat-row { grid-template-columns: 1fr 1fr; }
+      .trust-item { padding: 12px 20px; }
+      .footer-main { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════════════════════════════════ -->
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Med<span>Bridge</span></a>
+    <div class="nav-links" id="nav-links">
+      <a href="#canadians">For Canadians</a>
+      <a href="#americans">For Americans</a>
+      <a href="#verification">Verification</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#" class="nav-cta" onclick="openModal(event)">Free Assessment</a>
+    </div>
+    <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-inner">
+    <!-- LEFT -->
+    <div>
+      <div class="hero-eyebrow fade-in">
+        <div class="hero-eyebrow-dot"></div>
+        <span>Ontario-Registered Concierge</span>
+      </div>
+      <h1 class="hero-h1 fade-in fade-in-delay-1">
+        World-Class Surgery.<br>
+        <em>A Fraction</em><br>
+        of the Cost.
+      </h1>
+      <p class="hero-sub fade-in fade-in-delay-2">
+        MedBridge connects Canadians and Americans with JCI-accredited hospitals in India —
+        saving you 70–80% on knee replacement, cardiac surgery, spinal procedures, and more.
+        Verified. Coordinated. End-to-end.
+      </p>
+      <div class="hero-actions fade-in fade-in-delay-3">
+        <button class="btn-primary" onclick="openModal(event)">Get Free Assessment</button>
+        <a href="#how-it-works" class="btn-outline">See How It Works</a>
+      </div>
+      <div class="hero-trust fade-in fade-in-delay-4">
+        <div class="hero-trust-item"><div class="dot"></div><span>JCI-Accredited Hospitals Only</span></div>
+        <div class="hero-trust-item"><div class="dot"></div><span>No Commission from Hospitals</span></div>
+        <div class="hero-trust-item"><div class="dot"></div><span>Ontario Corporation Registered</span></div>
+      </div>
+    </div>
+    <!-- RIGHT — Cost Panel -->
+    <div class="fade-in fade-in-delay-2">
+      <div class="hero-panel">
+        <div class="panel-header">
+          <p>Cost Comparison Calculator</p>
+          <div class="panel-procedure-select">
+            <button class="proc-btn active" onclick="switchProc(this,'knee')">Knee</button>
+            <button class="proc-btn" onclick="switchProc(this,'hip')">Hip</button>
+            <button class="proc-btn" onclick="switchProc(this,'cardiac')">Cardiac</button>
+            <button class="proc-btn" onclick="switchProc(this,'spinal')">Spinal</button>
+          </div>
+        </div>
+        <div class="panel-rows" id="panel-rows">
+          <!-- filled by JS -->
+        </div>
+        <div class="panel-savings" id="panel-savings"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+
+<div id="trust-strip">
+  <div class="trust-strip-inner">
+    <div class="trust-item fade-in"><div class="trust-number">27.7</div><div class="trust-label">Weeks Avg. Canadian Wait</div></div>
+    <div class="trust-item fade-in fade-in-delay-1"><div class="trust-number">70–80%</div><div class="trust-label">Average Patient Savings</div></div>
+    <div class="trust-item fade-in fade-in-delay-2"><div class="trust-number">3–4</div><div class="trust-label">Weeks to Schedule</div></div>
+    <div class="trust-item fade-in fade-in-delay-3"><div class="trust-number">JCI</div><div class="trust-label">Only Accredited Hospitals</div></div>
+    <div class="trust-item fade-in fade-in-delay-4"><div class="trust-number">24hr</div><div class="trust-label">Response Commitment</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FOR CANADIANS
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section id="canadians">
+  <div class="container">
+    <div class="section-inner">
+      <div class="fade-in">
+        <div class="section-label">For Canadians</div>
+        <h2 class="section-title">Stop Waiting.<br>Start Recovering.</h2>
+        <p class="section-sub">Canada's public system covers most care — but the wait is destroying quality of life. Median wait from referral to treatment: <strong>27.7 weeks</strong>. Orthopedic surgery: up to <strong>2 years</strong>.</p>
+        <div class="market-stat-row">
+          <div class="market-stat"><div class="market-stat-number">27.7<span style="font-size:1rem"> wks</span></div><div class="market-stat-label">Median wait, family doctor to treatment (Fraser Institute 2024)</div></div>
+          <div class="market-stat"><div class="market-stat-number">$50K</div><div class="market-stat-label">Private knee replacement in Canada — if you can even find a facility</div></div>
+          <div class="market-stat"><div class="market-stat-number">3 wks</div><div class="market-stat-label">MedBridge average scheduling lead time to surgery in India</div></div>
+          <div class="market-stat"><div class="market-stat-number">75%</div><div class="market-stat-label">Average savings vs. Canadian private surgery</div></div>
+        </div>
+      </div>
+      <div class="fade-in fade-in-delay-1">
+        <table class="procedure-table">
+          <thead>
+            <tr>
+              <th>Procedure</th>
+              <th>Public Wait</th>
+              <th>Canada Private</th>
+              <th>MedBridge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Knee Replacement</td><td>12–18 mo</td><td>$35–45K</td><td class="price-mb">$8–12K</td></tr>
+            <tr><td>Hip Replacement</td><td>12–24 mo</td><td>$35–50K</td><td class="price-mb">$8–13K</td></tr>
+            <tr><td>Spinal Surgery</td><td>6–18 mo</td><td>$30–60K</td><td class="price-mb">$7–15K</td></tr>
+            <tr><td>Cardiac Bypass</td><td>6–12 mo</td><td>$80K+</td><td class="price-mb">$12–20K</td></tr>
+            <tr><td>IVF / Fertility</td><td>No wait</td><td>$15–25K</td><td class="price-mb">$4–8K</td></tr>
+            <tr><td>Dental Implants</td><td>No wait</td><td>$3–6K ea</td><td class="price-mb">$800–2K</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.75rem;color:var(--grey-text);margin-top:10px">All costs in CAD. MedBridge total includes concierge fee, hospital, accommodation. Source: Fraser Institute 2024.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FOR AMERICANS
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section id="americans">
+  <div class="container">
+    <div class="section-inner">
+      <div class="fade-in">
+        <div class="section-label" style="color:var(--gold)">For Americans</div>
+        <h2 class="section-title light">The Math Is Simple.<br>Go to India.</h2>
+        <p class="section-sub light">The US has the most expensive healthcare in the world. 100 million Americans carry medical debt. For many, flying to India and back — including surgery at a JCI hospital — costs <em>less</em> than their deductible.</p>
+        <div class="hsa-box">
+          <div class="hsa-box-title">✦ HSA & FSA Advantage</div>
+          <p>Medical travel expenses — including transportation and lodging up to $50/night — qualify for HSA and FSA reimbursement under IRS rules. MedBridge provides documentation for all eligible expenses. This is a significant advantage for HDHP patients with accumulated HSA balances.</p>
+        </div>
+      </div>
+      <div class="fade-in fade-in-delay-1">
+        <ul class="benefit-list">
+          <li>
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-text"><strong>Uninsured Patients Save $25–55K</strong>Knee replacement in the US without insurance: $40–70K. Total MedBridge cost including travel: $11–17K.</div>
+          </li>
+          <li>
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-text"><strong>High-Deductible Plan Holders</strong>If your deductible is $6,500–$8,000, MedBridge's total cost may be comparable to or less than your out-of-pocket maximum — with no insurance maze.</div>
+          </li>
+          <li>
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-text"><strong>IVF Almost Never Covered</strong>US IVF costs $15–25K per cycle, rarely covered. MedBridge India total: $4–8K including travel and accommodation.</div>
+          </li>
+          <li>
+            <div class="benefit-icon">✓</div>
+            <div class="benefit-text"><strong>Same Surgical Standards</strong>JCI is the international arm of the same Joint Commission that accredits US hospitals. These surgeons trained at Johns Hopkins, Mayo Clinic, and Harvard.</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     VERIFICATION
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section id="verification">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;max-width:560px;margin:0 auto">
+      <div class="section-label">Our Verification Standard</div>
+      <h2 class="section-title">Trust, But Verify.<br>We Do Both.</h2>
+      <p class="section-sub" style="margin:0 auto">MedBridge earns no commission from hospitals. Our only revenue is your concierge fee. That structural independence is what makes our verification real.</p>
+    </div>
+    <div class="verification-grid">
+      <div class="verify-card fade-in">
+        <div class="verify-card-number">01</div>
+        <h3>JCI Database Verification</h3>
+        <p>We cross-check every hospital's accreditation status directly at jointcommissioninternational.org — not from the hospital's own website. Date, scope, and any conditional findings are documented.</p>
+      </div>
+      <div class="verify-card fade-in fade-in-delay-1">
+        <div class="verify-card-number">02</div>
+        <h3>NABH Standards Review</h3>
+        <p>We verify NABH status via nabh.co — India's national hospital accreditation administered by the Quality Council of India. Top hospitals hold both JCI and NABH simultaneously.</p>
+      </div>
+      <div class="verify-card fade-in fade-in-delay-2">
+        <div class="verify-card-number">03</div>
+        <h3>International Patient Dept. Audit</h3>
+        <p>Direct contact with the hospital's IPD to verify English-speaking coordinators, established international protocols, transparent pricing, and communication quality.</p>
+      </div>
+      <div class="verify-card fade-in fade-in-delay-3">
+        <div class="verify-card-number">04</div>
+        <h3>Surgeon Credential Verification</h3>
+        <p>MCI registration, USMLE or PLAB qualifications for Western training, PubMed publication history, current hospital privileges, and active surgical practice — all verified independently.</p>
+      </div>
+      <div class="verify-card fade-in fade-in-delay-4">
+        <div class="verify-card-number">05</div>
+        <h3>Quarterly Re-Verification</h3>
+        <p>Accreditation status is re-checked every quarter. Annual review of patient outcome data where published. Continuous monitoring via direct patient follow-up with permission.</p>
+      </div>
+      <div class="verify-card fade-in fade-in-delay-1" style="display:flex;flex-direction:column;justify-content:center;align-items:flex-start;background:var(--navy);border-color:var(--navy)">
+        <p style="color:rgba(255,255,255,0.55);font-size:0.88rem;line-height:1.65;margin-bottom:16px">Every patient receives the hospital's JCI accreditation number before signing anything — and is actively encouraged to verify it themselves.</p>
+        <a href="https://www.jointcommissioninternational.org/about/jci-accredited-organizations/" target="_blank" class="jci-link">
+          Verify JCI Accreditation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="transparency-box fade-in">
+      <div>
+        <h3>Our Transparency Commitment</h3>
+        <p>Every patient receives a full verification packet before signing any agreement. We actively encourage patients to verify everything themselves before making any decision or payment.</p>
+      </div>
+      <ul class="transparency-list">
+        <li>Hospital name and JCI accreditation number for independent verification</li>
+        <li>Copy of the JCI accreditation certificate</li>
+        <li>Surgeon CV, MCI registration number, and fellowship credentials</li>
+        <li>Hospital outcome statistics where publicly available</li>
+        <li>Hospital's direct International Patient Department contact information</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section id="how-it-works">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;max-width:560px;margin:0 auto 0">
+      <div class="section-label">The Process</div>
+      <h2 class="section-title">From Inquiry to Recovery.<br>We Handle Everything.</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-in">
+        <div class="step-number">1</div>
+        <h3>Medical Assessment & Hospital Matching</h3>
+        <p>Submit your records securely. We identify 2–3 JCI-accredited hospitals appropriate for your procedure, with full surgeon CVs and itemized quotes.</p>
+        <div class="step-timeline">24–48 Hours</div>
+      </div>
+      <div class="step-card fade-in fade-in-delay-1">
+        <div class="step-number">2</div>
+        <h3>Verification & Quote Confirmation</h3>
+        <p>You receive the hospital's JCI accreditation number to verify independently. Once you choose, we confirm the quote in writing in your Service Agreement.</p>
+        <div class="step-timeline">5–7 Days Review</div>
+      </div>
+      <div class="step-card fade-in fade-in-delay-2">
+        <div class="step-number">3</div>
+        <h3>Full Travel & Logistics Coordination</h3>
+        <p>Visa documentation, flight recommendations, 4-star accommodation near the hospital, pre-departure briefing, airport transfers, and on-call support throughout your stay.</p>
+        <div class="step-timeline">2–3 Weeks to Departure</div>
+      </div>
+      <div class="step-card fade-in fade-in-delay-3">
+        <div class="step-number">4</div>
+        <h3>Post-Return Continuity of Care</h3>
+        <p>Full medical records transmitted to your domestic physician. Canadian patients get provincial follow-up coordination. Check-ins at 2 weeks, 4 weeks, and 90 days.</p>
+        <div class="step-timeline">90-Day Follow-Up</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     PRICING
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section id="pricing">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Transparent Pricing</div>
+      <h2 class="section-title">No Hidden Costs.<br>No Hospital Commissions. Ever.</h2>
+      <p class="section-sub">MedBridge charges a single concierge fee — paid directly to us. Hospital costs are paid directly by you to the hospital. Two separate transactions. Full transparency.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="fade-in fade-in-delay-1">
+        <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Sample All-In Cost — Knee Replacement (USD)</p>
+        <table class="pricing-table">
+          <thead>
+            <tr><th>Cost Item</th><th>Paid To</th><th>Est. Range</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Surgical Suite & Anaesthesia</td><td>Hospital</td><td>$3,500–5,000</td></tr>
+            <tr><td>Surgeon Fee</td><td>Hospital</td><td>$1,500–2,000</td></tr>
+            <tr><td>FDA/CE-Approved Implants</td><td>Hospital</td><td>$1,500–2,000</td></tr>
+            <tr><td>Hospital Stay (7–10 nights)</td><td>Hospital</td><td>$500–1,000</td></tr>
+            <tr><td>Accommodation (14 nights, 4★)</td><td>Direct/MedBridge</td><td>$800–1,200</td></tr>
+            <tr><td>Round-Trip Flights</td><td>Patient Direct</td><td>$1,200–1,800</td></tr>
+            <tr><td>MedBridge Concierge Fee</td><td>MedBridge</td><td>$2,500–4,000</td></tr>
+            <tr class="total-row"><td colspan="2"><strong>TOTAL ALL-INCLUSIVE</strong></td><td class="price-total">$11,500–17,000</td></tr>
+          </tbody>
+        </table>
+        <div class="payment-note">
+          <strong>Payment:</strong> 50% deposit on signing. Balance due 7 days before departure. CAD or USD accepted.
+        </div>
+      </div>
+      <div class="fade-in fade-in-delay-2">
+        <p style="font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">MedBridge Concierge Fee</p>
+        <div class="fee-cards">
+          <div class="fee-card">
+            <div class="fee-card-tier">Standard</div>
+            <div class="fee-card-price">$2,500</div>
+            <div class="fee-card-desc">Dental implants, minor orthopaedic procedures</div>
+          </div>
+          <div class="fee-card featured">
+            <div class="fee-card-tier">Core — Most Common</div>
+            <div class="fee-card-price">$3,000</div>
+            <div class="fee-card-desc">Knee/hip replacement, spinal surgery, IVF</div>
+          </div>
+          <div class="fee-card">
+            <div class="fee-card-tier">Complex</div>
+            <div class="fee-card-price">$3,500–$4,000</div>
+            <div class="fee-card-desc">Cardiac surgery, multi-stage procedures</div>
+          </div>
+        </div>
+        <p style="font-size:0.8rem;color:var(--grey-text);margin-top:16px;line-height:1.6">Fee confirmed in writing in Schedule A of your Service Agreement before any payment is made. MedBridge <strong>never</strong> receives commission from hospitals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FAQ
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section id="faq">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;max-width:560px;margin:0 auto">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">We Understand<br>Your Concerns.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>How do I know the hospital is truly JCI-accredited?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">We provide the hospital's JCI accreditation number before you sign anything. You can verify it directly at jointcommissioninternational.org in 60 seconds — no account needed. We actively encourage you to do this. JCI is the international arm of the same Joint Commission that accredits US hospitals. It evaluates over 1,000 standards across patient care, medication safety, infection control, and governance.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What happens if there are complications?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">The hospital's medical team manages all clinical complications during your stay. MedBridge remains on-call throughout your time in India to assist with coordination. We strongly recommend — and will help you source — comprehensive travel insurance and medical evacuation insurance before you depart. Upon return, your domestic physician receives complete records from us, and we remain available for 90 days of follow-up coordination. For Canadian patients, provincial health plans cover most follow-up care for returning residents.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Will my Canadian provincial health plan cover follow-up care?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">In most provinces, follow-up care for a returning resident — including physiotherapy, imaging, and family doctor visits — is covered by the provincial health plan regardless of where the surgery was performed. MedBridge transmits complete operative records and discharge summaries to your domestic physician to ensure seamless continuity of care. We recommend confirming specifics with your provincial health authority before departure.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Why should I trust a company I've never heard of?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">That's exactly the right question. MedBridge is an Ontario-registered corporation — legally accountable, not an anonymous website. Our Patient Service Agreement is a binding legal contract with clear terms, a defined scope of services, and a refund policy. We provide every hospital's JCI accreditation number for independent verification before you pay anything. We earn zero commission from hospitals — our only income is your concierge fee, which is only paid after you've reviewed everything and chosen to proceed. And we encourage you to take your time.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>Are there financing options?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">MedBridge does not provide financing directly. However, many patients use existing HSA or FSA balances (US patients), personal lines of credit, or medical financing services. The concierge fee is split 50/50 between signing and 7 days before departure, which helps with cash flow. We're happy to discuss your situation during your free assessment call.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span>What is MedBridge — and what is it not?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">MedBridge is a coordination and concierge service — not a medical provider. We do not provide medical advice, diagnose conditions, or recommend specific surgical approaches. We verify hospitals, match patients, coordinate logistics, and ensure communication flows between you, the hospital, and your home physician. All medical decisions are made by qualified surgeons at accredited hospitals. This distinction matters legally and practically — and it's reflected in every document we ask you to sign.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CTA
+════════════════════════════════════════════════════════════════════════════ -->
+
+<section id="cta">
+  <div class="cta-inner fade-in">
+    <div class="section-label" style="color:var(--gold)">Start Today</div>
+    <h2 class="section-title light" style="font-size:clamp(2rem,3.5vw,2.8rem)">Your Free Assessment<br>Takes 10 Minutes.</h2>
+    <p>Tell us your procedure, your situation, and your questions. We respond within 24 hours — no pressure, no commitment. Just clarity.</p>
+    <button class="btn-primary" onclick="openModal(event)" style="font-size:0.95rem;padding:17px 40px">
+      Request Free Assessment
+    </button>
+    <p style="color:rgba(255,255,255,0.3);font-size:0.8rem;margin-top:16px">
+      Or email us directly: <a href="/cdn-cgi/l/email-protection#7e1d11100d0b120a3e131b1a1c0c171a191b501d1f" style="color:var(--gold)"><span class="__cf_email__" data-cfemail="187b77766b6d746c58757d7c7a6a717c7f7d367b79">[email&#160;protected]</span></a>
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════════════════════ -->
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand-col">
+      <a href="#hero" class="logo">Med<span>Bridge</span></a>
+      <p>An Ontario-registered medical tourism concierge helping Canadians and Americans access JCI-accredited surgery in India — safely, verifiably, and affordably.</p>
+      <div class="reg-badge">
+        <span>Ontario Corporation</span>
+        <strong>Registered &amp; Compliant</strong>
+      </div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Services</div>
+      <ul>
+        <li><a href="#canadians">For Canadians</a></li>
+        <li><a href="#americans">For Americans</a></li>
+        <li><a href="#verification">Our Verification</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Procedures</div>
+      <ul>
+        <li><a href="#canadians">Knee Replacement</a></li>
+        <li><a href="#canadians">Hip Replacement</a></li>
+        <li><a href="#canadians">Cardiac Surgery</a></li>
+        <li><a href="#canadians">Spinal Surgery</a></li>
+        <li><a href="#canadians">IVF / Fertility</a></li>
+        <li><a href="#canadians">Dental Implants</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Legal &amp; Contact</div>
+      <ul>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#b0d3dfdec3c5dcc4f0ddd5d4d2c2d9d4d7d59ed3d1"><span class="__cf_email__" data-cfemail="beddd1d0cdcbd2cafed3dbdadcccd7dad9db90dddf">[email&#160;protected]</span></a></li>
+        <li><a href="/cdn-cgi/l/email-protection#82f2f0ebf4e3e1fbc2efe7e6e0f0ebe6e5e7ace1e3"><span class="__cf_email__" data-cfemail="ea9a98839c8b8993aa878f8e8898838e8d8fc4898b">[email&#160;protected]</span></a></li>
+        <li><a href="https://www.jointcommissioninternational.org" target="_blank">Verify JCI ↗</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 MedBridge Healthcare Concierge Inc. All rights reserved. Toronto, Ontario, Canada.</p>
+    <div class="footer-legal-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+  <div class="not-medical container">
+    MedBridge Healthcare Concierge Inc. is not a medical provider, hospital, clinic, or healthcare facility. MedBridge provides coordination and concierge services only. Nothing on this website constitutes medical advice. All medical decisions should be made in consultation with a qualified, licensed healthcare professional.
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     CONSULTATION MODAL
+════════════════════════════════════════════════════════════════════════════ -->
+
+<div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <h2>Free Assessment Request</h2>
+        <p>We respond within 24 hours — no commitment required</p>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name *</label>
+          <input type="text" placeholder="Your first name">
+        </div>
+        <div class="form-group">
+          <label>Last Name *</label>
+          <input type="text" placeholder="Your last name">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+1 (___) ___-____">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>I Am From *</label>
+          <select>
+            <option value="">Select…</option>
+            <option>Canada</option>
+            <option>United States</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Province / State</label>
+          <input type="text" placeholder="e.g. Ontario, Texas">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Procedure Needed *</label>
+        <select>
+          <option value="">Select procedure…</option>
+          <option>Knee Replacement</option>
+          <option>Hip Replacement</option>
+          <option>Cardiac Surgery / Bypass</option>
+          <option>Spinal Surgery</option>
+          <option>IVF / Fertility Treatment</option>
+          <option>Dental Implants</option>
+          <option>Other — I'll describe below</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Brief Medical Summary</label>
+        <textarea placeholder="Optional: Share any relevant background — diagnosis, urgency, current situation. This helps us match you faster."></textarea>
+      </div>
+      <div class="form-consent">
+        <input type="checkbox" id="consent">
+        <label for="consent">
+          I consent to MedBridge contacting me regarding my inquiry, and to the collection and use of my information in accordance with the
+          <a href="privacy.html" target="_blank">Privacy Policy</a>.
+          I understand this does not create any binding obligation.
+        </label>
+      </div>
+      <button class="form-submit" onclick="submitForm()">Submit Assessment Request</button>
+      <p class="form-note">
+        By submitting you agree to our <a href="terms.html" target="_blank" style="color:var(--navy);text-decoration:underline">Terms of Service</a>.
+        MedBridge is not a medical provider.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════════════════════ -->
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+// ── COST DATA ──────────────────────────────────────────────────────────────
+const procedures = {
+  knee: {
+    rows: [
+      { label: 'Canada — Public System', sub: '12–18 month wait', value: 'Free (taxes paid)', cls: '' },
+      { label: 'Canada — Private Surgery', sub: 'Estimated', value: '$35,000–$50,000', cls: 'strike' },
+      { label: 'USA — Uninsured', sub: 'No coverage', value: '$40,000–$70,000', cls: 'strike' },
+      { label: 'USA — Insured Out-of-Pocket', sub: 'After deductible', value: '$6,500–$11,000', cls: '' },
+      { label: 'MedBridge — JCI India', sub: 'All-in, 3–4 weeks', value: '$11,500–$17,000', cls: 'highlight', featured: true },
+    ],
+    savings: 'Typical savings vs. US uninsured: $25,000–$55,000'
+  },
+  hip: {
+    rows: [
+      { label: 'Canada — Public System', sub: '12–24 month wait', value: 'Free (taxes paid)', cls: '' },
+      { label: 'Canada — Private Surgery', sub: 'Estimated', value: '$35,000–$50,000', cls: 'strike' },
+      { label: 'USA — Uninsured', sub: 'No coverage', value: '$40,000–$75,000', cls: 'strike' },
+      { label: 'USA — Insured Out-of-Pocket', sub: 'After deductible', value: '$6,500–$12,000', cls: '' },
+      { label: 'MedBridge — JCI India', sub: 'All-in, 3–4 weeks', value: '$12,000–$18,000', cls: 'highlight', featured: true },
+    ],
+    savings: 'Typical savings vs. Canadian private: $20,000–$35,000'
+  },
+  cardiac: {
+    rows: [
+      { label: 'Canada — Public System', sub: '6–12 month wait', value: 'Free (taxes paid)', cls: '' },
+      { label: 'Canada — Private Surgery', sub: 'If available', value: '$80,000+', cls: 'strike' },
+      { label: 'USA — Uninsured', sub: 'No coverage', value: '$75,000–$150,000', cls: 'strike' },
+      { label: 'USA — Insured Out-of-Pocket', sub: 'After deductible', value: '$10,000–$20,000', cls: '' },
+      { label: 'MedBridge — JCI India', sub: 'All-in, 3–4 weeks', value: '$15,000–$25,000', cls: 'highlight', featured: true },
+    ],
+    savings: 'Typical savings vs. US uninsured: $60,000–$125,000'
+  },
+  spinal: {
+    rows: [
+      { label: 'Canada — Public System', sub: '6–18 month wait', value: 'Free (taxes paid)', cls: '' },
+      { label: 'Canada — Private Surgery', sub: 'Estimated', value: '$30,000–$60,000', cls: 'strike' },
+      { label: 'USA — Uninsured', sub: 'No coverage', value: '$50,000–$100,000', cls: 'strike' },
+      { label: 'USA — Insured Out-of-Pocket', sub: 'After deductible', value: '$8,000–$15,000', cls: '' },
+      { label: 'MedBridge — JCI India', sub: 'All-in, 3–4 weeks', value: '$10,000–$18,000', cls: 'highlight', featured: true },
+    ],
+    savings: 'Typical savings vs. US uninsured: $35,000–$85,000'
+  }
+};
+
+function renderPanel(key) {
+  const data = procedures[key];
+  const rows = data.rows.map(r => `
+    <div class="panel-row${r.featured ? ' featured' : ''}">
+      <div class="panel-row-label">${r.label}<div class="sub">${r.sub}</div></div>
+      <div class="panel-row-value ${r.cls}">${r.value}</div>
+    </div>`).join('');
+  document.getElementById('panel-rows').innerHTML = rows;
+  document.getElementById('panel-savings').innerHTML = `<span>✦ ${data.savings}</span>`;
+}
+
+function switchProc(btn, key) {
+  document.querySelectorAll('.proc-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPanel(key);
+}
+
+window.addEventListener('DOMContentLoaded', function() { renderPanel('knee'); });
+
+// ── SCROLL PROGRESS ────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const el = document.documentElement;
+  const pct = el.scrollTop / (el.scrollHeight - el.clientHeight);
+  document.getElementById('scroll-progress').style.width = (pct * 100) + '%';
+  document.getElementById('navbar').classList.toggle('scrolled', el.scrollTop > 40);
+});
+
+// ── FADE IN OBSERVER ───────────────────────────────────────────────────────
+// Animate elements as they scroll into view
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  obs.observe(el);
+});
+// Immediately show elements already in viewport on load
+setTimeout(() => {
+  document.querySelectorAll('.fade-in').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      el.classList.add('visible');
+    }
+  });
+}, 100);
+
+// ── MOBILE MENU ────────────────────────────────────────────────────────────
+document.getElementById('mobile-toggle').addEventListener('click', () => {
+  document.getElementById('nav-links').classList.toggle('mobile-open');
+});
+
+// ── FAQ ────────────────────────────────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const answer = item.querySelector('.faq-answer');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-answer').style.maxHeight = null;
+  });
+  if (!isOpen) {
+    item.classList.add('open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+  }
+}
+
+// ── MODAL ──────────────────────────────────────────────────────────────────
+function openModal(e) { if(e) e.preventDefault(); document.getElementById('modal-overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); document.body.style.overflow = ''; }
+function closeModalOutside(e) { if (e.target === document.getElementById('modal-overlay')) closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function submitForm() {
+  const consent = document.getElementById('consent').checked;
+  if (!consent) { alert('Please confirm your consent to proceed.'); return; }
+  document.querySelector('.modal-body').innerHTML = `
+    <div style="text-align:center;padding:48px 24px">
+      <div style="font-size:2.5rem;margin-bottom:16px">✓</div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:12px">Assessment Received</h3>
+      <p style="color:var(--grey-text);line-height:1.7">Thank you for reaching out. A MedBridge coordinator will respond to your inquiry within 24 hours at the email address you provided.</p>
+        <p style="color:var(--grey-text);font-size:0.85rem;margin-top:12px">In the meantime, you can email us directly at <a href="mailto:consult@medbridge.ca" style="color:var(--navy)">consult@medbridge.ca</a></p>
+      <button onclick="closeModal()" style="margin-top:28px;background:var(--navy);color:white;border:none;padding:12px 32px;font-family:'Lato',sans-serif;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px">Close</button>
+    </div>`;
+}
+</script>
+</body>
+</html>
