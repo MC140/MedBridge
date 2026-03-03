@@ -3,472 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MedBridge Healthcare Concierge — Important Notice</title>
+  <title>MedBridge Healthcare Concierge</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:     #0B1F3A;
-      --navy-mid: #122848;
-      --gold:     #C9A84C;
-      --gold-light: #E2C06A;
-      --white:    #FFFFFF;
-      --off-white:#F9F8F5;
-      --grey-mid: #DDE1E9;
-      --grey-text:#6B7280;
-      --body:     #2D3748;
-      --red:      #C0392B;
-    }
-
-    html, body {
-      height: 100%;
+    body {
       font-family: 'Lato', sans-serif;
-      background: var(--navy);
-      color: var(--body);
+      background: #0B1F3A;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
     }
-
-    /* ── BACKGROUND ── */
-    .bg {
+    body::before {
+      content: '';
       position: fixed; inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 30% 40%, rgba(201,168,76,0.07), transparent 70%),
-        radial-gradient(ellipse 50% 50% at 80% 80%, rgba(201,168,76,0.04), transparent 60%);
+        radial-gradient(ellipse 70% 70% at 20% 50%, rgba(201,168,76,0.06), transparent),
+        radial-gradient(ellipse 50% 50% at 80% 80%, rgba(201,168,76,0.04), transparent);
+      pointer-events: none;
     }
-    .bg-grid {
-      position: fixed; inset: 0; opacity: 0.025;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px);
-      background-size: 56px 56px;
+    .card {
+      background: #fff;
+      width: 100%; max-width: 460px;
+      border-radius: 6px; overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+      animation: rise 0.45s cubic-bezier(0.22,1,0.36,1);
+      position: relative; z-index: 1;
     }
-
-    /* ── OVERLAY WRAPPER ── */
-    .gate-wrap {
-      position: relative; z-index: 10;
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px 16px;
+    @keyframes rise {
+      from { opacity:0; transform:translateY(28px) scale(0.97); }
+      to   { opacity:1; transform:translateY(0) scale(1); }
     }
-
-    /* ── CARD ── */
-    .gate-card {
-      background: var(--white);
-      max-width: 640px; width: 100%;
-      border-radius: 4px;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
-      overflow: hidden;
-      animation: cardIn 0.5s cubic-bezier(0.22,1,0.36,1);
+    .card-head {
+      background: #0B1F3A;
+      padding: 28px 32px 24px;
+      border-bottom: 3px solid #C9A84C;
     }
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(32px) scale(0.97); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    /* ── CARD HEADER ── */
-    .gate-header {
-      background: var(--navy);
-      padding: 32px 40px 28px;
-      border-bottom: 3px solid var(--gold);
-      position: relative;
-    }
-    .gate-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem; font-weight: 700;
-      color: var(--white); margin-bottom: 20px;
-      display: block;
-    }
-    .gate-logo span { color: var(--gold); }
-    .gate-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(201,168,76,0.12);
-      border: 1px solid rgba(201,168,76,0.35);
-      padding: 6px 14px; border-radius: 2px;
-      margin-bottom: 16px;
-    }
-    .gate-badge-dot {
-      width: 6px; height: 6px;
-      background: var(--gold); border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
-    .gate-badge span {
-      color: var(--gold); font-size: 0.68rem;
-      font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
-    }
-    .gate-header h1 {
-      font-family: 'Playfair Display', serif;
-      color: var(--white); font-size: 1.55rem;
-      font-weight: 700; line-height: 1.3;
-    }
-    .gate-header p {
-      color: rgba(255,255,255,0.55);
-      font-size: 0.88rem; margin-top: 8px; line-height: 1.6;
-    }
-
-    /* ── CARD BODY ── */
-    .gate-body { padding: 32px 40px; }
-
-    /* ── NOTICE ITEMS ── */
-    .notice-list { list-style: none; margin-bottom: 28px; }
-    .notice-list li {
-      display: flex; gap: 14px; align-items: flex-start;
-      padding: 13px 0;
-      border-bottom: 1px solid var(--grey-mid);
-      font-size: 0.9rem; line-height: 1.6; color: var(--body);
-    }
-    .notice-list li:last-child { border-bottom: none; }
-    .notice-icon {
-      width: 28px; height: 28px; flex-shrink: 0;
-      background: var(--navy); border-radius: 2px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.75rem; color: var(--gold); font-weight: 700;
-      margin-top: 1px;
-    }
-    .notice-list li strong { color: var(--navy); display: block; margin-bottom: 2px; font-size: 0.92rem; }
-
-    /* ── CONSENT BOXES ── */
-    .consent-section {
-      background: #F9F8F5;
-      border: 1px solid var(--grey-mid);
-      border-left: 4px solid var(--navy);
-      border-radius: 2px;
-      padding: 20px 22px;
-      margin-bottom: 14px;
-    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: #fff; margin-bottom: 14px; display: block; }
+    .logo span { color: #C9A84C; }
+    .card-head h2 { font-family: 'Playfair Display', serif; color: #fff; font-size: 1.15rem; font-weight: 700; line-height: 1.35; }
+    .card-head p { color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 6px; line-height: 1.5; }
+    .card-body { padding: 24px 32px 28px; }
     .consent-row {
-      display: flex; gap: 14px; align-items: flex-start;
+      display: flex; gap: 12px; align-items: flex-start;
+      background: #F9F8F5; border: 1px solid #E2E6ED;
+      border-left: 3px solid #0B1F3A; border-radius: 3px;
+      padding: 16px; margin-bottom: 20px; cursor: pointer;
+      transition: border-color 0.2s;
     }
-    .consent-row input[type="checkbox"] {
-      width: 20px; height: 20px;
-      margin-top: 2px; flex-shrink: 0;
-      accent-color: var(--navy); cursor: pointer;
+    .consent-row:hover { border-color: #C9A84C; border-left-color: #C9A84C; }
+    .consent-row.error { border-color: #C0392B; border-left-color: #C0392B; background: #FEF2F2; }
+    .consent-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: #0B1F3A; cursor: pointer; }
+    .consent-row label { font-size: 0.85rem; line-height: 1.6; color: #2D3748; cursor: pointer; }
+    .consent-row label a { color: #0B1F3A; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+    .consent-row label a:hover { color: #C9A84C; }
+    .error-msg { display: none; font-size: 0.78rem; color: #C0392B; font-weight: 700; margin: -12px 0 14px 2px; }
+    .error-msg.show { display: block; }
+    .btn {
+      width: 100%; background: #0B1F3A; color: #fff; border: none;
+      padding: 14px; font-family: 'Lato', sans-serif;
+      font-weight: 900; font-size: 0.85rem; letter-spacing: 0.12em;
+      text-transform: uppercase; border-radius: 3px; cursor: pointer;
+      transition: background 0.2s; position: relative;
     }
-    .consent-row label {
-      font-size: 0.88rem; line-height: 1.65;
-      color: var(--body); cursor: pointer;
-    }
-    .consent-row label a {
-      color: var(--navy); font-weight: 700;
-      text-decoration: underline; text-underline-offset: 2px;
-    }
-    .consent-row label a:hover { color: var(--gold); }
-
-    /* ── ERROR ── */
-    .error-msg {
-      display: none;
-      background: #FEF2F2; border: 1px solid #FECACA;
-      border-left: 4px solid var(--red);
-      padding: 12px 16px; border-radius: 2px;
-      font-size: 0.85rem; color: var(--red);
-      margin-bottom: 16px; font-weight: 700;
-    }
-    .error-msg.show { display: block; animation: shake 0.3s ease; }
-    @keyframes shake {
-      0%,100%{transform:translateX(0)}
-      25%{transform:translateX(-6px)}
-      75%{transform:translateX(6px)}
-    }
-
-    /* ── BUTTON ── */
-    .gate-btn {
-      width: 100%; background: var(--navy);
-      color: var(--white); border: none;
-      padding: 16px 24px;
-      font-family: 'Lato', sans-serif;
-      font-weight: 900; font-size: 0.9rem;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      border-radius: 2px; cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      position: relative; overflow: hidden;
-    }
-    .gate-btn:hover { background: var(--navy-mid); }
-    .gate-btn:active { transform: scale(0.99); }
-    .gate-btn.loading { pointer-events: none; }
-    .gate-btn .btn-text { transition: opacity 0.2s; }
-    .gate-btn .btn-spinner {
-      display: none;
-      position: absolute; inset: 0;
-      align-items: center; justify-content: center;
-    }
-    .gate-btn.loading .btn-text { opacity: 0; }
-    .gate-btn.loading .btn-spinner { display: flex; }
-    .spinner {
-      width: 20px; height: 20px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 0.7s linear infinite;
-    }
+    .btn:hover { background: #122848; }
+    .btn.loading { pointer-events: none; }
+    .btn .label { transition: opacity 0.2s; }
+    .btn .spinner { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; }
+    .btn.loading .label { opacity: 0; }
+    .btn.loading .spinner { display: flex; }
+    .spin { width: 18px; height: 18px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    /* ── FOOTER NOTE ── */
-    .gate-foot {
-      text-align: center; margin-top: 16px;
-      font-size: 0.76rem; color: var(--grey-text); line-height: 1.6;
-    }
-    .gate-foot a { color: var(--grey-text); text-decoration: underline; }
-
-    /* ── SUCCESS STATE ── */
-    .success-screen {
-      display: none;
-      text-align: center; padding: 56px 40px;
-    }
-    .success-check {
-      width: 64px; height: 64px;
-      background: #E8F5E9; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 1.6rem;
-      animation: popIn 0.4s cubic-bezier(0.22,1,0.36,1);
-    }
-    @keyframes popIn { from{transform:scale(0)}to{transform:scale(1)} }
-    .success-screen h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; color: var(--navy); margin-bottom: 10px;
-    }
-    .success-screen p { color: var(--grey-text); font-size: 0.93rem; line-height: 1.7; margin-bottom: 8px; }
-    .success-btn {
-      display: inline-block; margin-top: 28px;
-      background: var(--gold); color: var(--navy);
-      padding: 14px 36px; font-weight: 900;
-      font-size: 0.88rem; letter-spacing: 0.1em;
-      text-transform: uppercase; border-radius: 2px;
-      text-decoration: none; border: none; cursor: pointer;
-      font-family: 'Lato', sans-serif;
-      transition: background 0.2s;
-    }
-    .success-btn:hover { background: var(--gold-light); }
-
-    /* ── TIMESTAMP ── */
-    .timestamp-note {
-      font-size: 0.72rem; color: var(--grey-text);
-      text-align: center; margin-top: 10px;
-      letter-spacing: 0.04em;
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 480px) {
-      .gate-header { padding: 24px 24px 22px; }
-      .gate-body { padding: 24px 24px; }
-      .gate-header h1 { font-size: 1.3rem; }
-      .success-screen { padding: 40px 24px; }
-    }
+    .fine-print { text-align: center; margin-top: 14px; font-size: 0.72rem; color: #9CA3AF; line-height: 1.55; }
+    .fine-print a { color: #9CA3AF; text-decoration: underline; }
+    .success { display: none; text-align: center; padding: 40px 32px; }
+    .success-icon { width: 52px; height: 52px; background: #E8F5E9; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 1.3rem; animation: pop 0.35s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes pop { from{transform:scale(0)} to{transform:scale(1)} }
+    .success h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #0B1F3A; margin-bottom: 8px; }
+    .success p { font-size: 0.85rem; color: #6B7280; line-height: 1.6; }
+    .success-btn { display: inline-block; margin-top: 22px; background: #C9A84C; color: #0B1F3A; padding: 13px 32px; font-family: 'Lato', sans-serif; font-weight: 900; font-size: 0.83rem; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px; border: none; cursor: pointer; transition: background 0.2s; }
+    .success-btn:hover { background: #E2C06A; }
   </style>
 </head>
 <body>
-
-<div class="bg"></div>
-<div class="bg-grid"></div>
-
-<div class="gate-wrap">
-  <div class="gate-card" id="gate-card">
-
-    <!-- ── MAIN CONSENT SCREEN ── -->
-    <div id="consent-screen">
-      <div class="gate-header">
-        <span class="gate-logo">Med<span>Bridge</span></span>
-        <div class="gate-badge">
-          <div class="gate-badge-dot"></div>
-          <span>Important — Please Read Before Continuing</span>
-        </div>
-        <h1>Before You Enter<br>medbridge.ca</h1>
-        <p>This website is operated by MedBridge Healthcare Concierge Inc., an Ontario-registered corporation. Please review and confirm the following before accessing our services.</p>
-      </div>
-
-      <div class="gate-body">
-
-        <!-- Key notices -->
-        <ul class="notice-list">
-          <li>
-            <div class="notice-icon">1</div>
-            <div>
-              <strong>MedBridge Is Not a Medical Provider</strong>
-              MedBridge provides coordination and concierge services only. We do not provide medical advice, diagnosis, clinical recommendations, or any regulated health services of any kind.
-            </div>
-          </li>
-          <li>
-            <div class="notice-icon">2</div>
-            <div>
-              <strong>No Medical Advice on This Website</strong>
-              Nothing on medbridge.ca constitutes medical advice. All information is for general informational purposes only. Medical decisions must be made with a qualified, licensed healthcare professional.
-            </div>
-          </li>
-          <li>
-            <div class="notice-icon">3</div>
-            <div>
-              <strong>Hospitals Are Independent Entities</strong>
-              JCI-accredited hospitals in India are completely separate legal entities from MedBridge. All medical care and clinical responsibility rests with the treating hospital and its staff.
-            </div>
-          </li>
-          <li>
-            <div class="notice-icon">4</div>
-            <div>
-              <strong>Personal Information Collection</strong>
-              If you submit an inquiry, MedBridge will collect and use your personal information in accordance with our Privacy Policy and PIPEDA (Canada's federal privacy law).
-            </div>
-          </li>
-        </ul>
-
-        <!-- Consent checkboxes -->
-        <div class="consent-section">
-          <div class="consent-row">
-            <input type="checkbox" id="c1">
-            <label for="c1">
-              I understand that <strong>MedBridge is not a medical provider</strong> and does not provide medical advice, diagnosis, or clinical services. I will consult a qualified physician before making any medical decisions. I have read and agree to the
-              <a href="terms.html" target="_blank">Terms of Service</a>.
-            </label>
-          </div>
-        </div>
-
-        <div class="consent-section">
-          <div class="consent-row">
-            <input type="checkbox" id="c2">
-            <label for="c2">
-              I consent to MedBridge collecting and using my personal information if I submit an inquiry, in accordance with the
-              <a href="privacy.html" target="_blank">Privacy Policy</a>.
-              I understand I may withdraw consent at any time by contacting
-              <a href="mailto:privacy@medbridge.ca">privacy@medbridge.ca</a>.
-            </label>
-          </div>
-        </div>
-
-        <div class="consent-section">
-          <div class="consent-row">
-            <input type="checkbox" id="c3">
-            <label for="c3">
-              I confirm I am <strong>18 years of age or older</strong>, and that I am accessing this website for lawful purposes in accordance with the laws of my jurisdiction.
-            </label>
-          </div>
-        </div>
-
-        <!-- Error -->
-        <div class="error-msg" id="error-msg">
-          Please check all three boxes to continue.
-        </div>
-
-        <!-- Submit -->
-        <button class="gate-btn" id="enter-btn" onclick="handleConsent()">
-          <span class="btn-text">I Agree — Enter MedBridge</span>
-          <span class="btn-spinner"><div class="spinner"></div></span>
-        </button>
-
-        <p class="gate-foot">
-          By entering you agree to our
-          <a href="terms.html" target="_blank">Terms of Service</a> and
-          <a href="privacy.html" target="_blank">Privacy Policy</a>.<br>
-          MedBridge Healthcare Concierge Inc. &nbsp;·&nbsp; Toronto, Ontario, Canada<br>
-          Not a medical provider. Coordination services only.
-        </p>
-
-      </div><!-- /gate-body -->
-    </div><!-- /consent-screen -->
-
-    <!-- ── SUCCESS SCREEN ── -->
-    <div class="success-screen" id="success-screen">
-      <div class="success-check">✓</div>
-      <h2>Thank You</h2>
-      <p>Your acknowledgment has been recorded. You may now access medbridge.ca.</p>
-      <p id="success-timestamp" style="font-size:0.8rem"></p>
-      <button class="success-btn" onclick="enterSite()">Enter MedBridge →</button>
+<div class="card" id="card">
+  <div id="consent-screen">
+    <div class="card-head">
+      <span class="logo">Med<span>Bridge</span></span>
+      <h2>Before You Continue</h2>
+      <p>MedBridge Healthcare Concierge Inc. — Ontario, Canada</p>
     </div>
-
-  </div><!-- /gate-card -->
-</div><!-- /gate-wrap -->
-
+    <div class="card-body">
+      <div class="consent-row" id="consent-row" onclick="toggleCheck()">
+        <input type="checkbox" id="cb">
+        <label for="cb">
+          By continuing, I confirm I have read and agree to the
+          <a href="privacy.html" target="_blank" onclick="event.stopPropagation()">Privacy Policy</a>
+          and
+          <a href="terms.html" target="_blank" onclick="event.stopPropagation()">Terms of Service</a>,
+          and I understand that MedBridge is not a medical provider and does not give medical advice.
+        </label>
+      </div>
+      <div class="error-msg" id="error-msg">Please check the box to continue.</div>
+      <button class="btn" id="btn" onclick="handleConsent()">
+        <span class="label">Continue to MedBridge</span>
+        <span class="spinner"><div class="spin"></div></span>
+      </button>
+      <p class="fine-print">
+        MedBridge Healthcare Concierge Inc. · Toronto, Ontario, Canada<br>
+        Not a medical provider. Coordination services only.
+      </p>
+    </div>
+  </div>
+  <div class="success" id="success-screen">
+    <div class="success-icon">✓</div>
+    <h3>You're All Set</h3>
+    <p>Your acknowledgment has been recorded.<br>Welcome to MedBridge.</p>
+    <button class="success-btn" onclick="enterSite()">Enter Website →</button>
+  </div>
+</div>
 <script>
-  // ── TIMESTAMP ──────────────────────────────────────────────────────────────
-  function getTimestamp() {
-    const now = new Date();
-    return now.toLocaleString('en-CA', {
-      year: 'numeric', month: 'long', day: 'numeric',
-      hour: '2-digit', minute: '2-digit', second: '2-digit',
-      timeZoneName: 'short'
-    });
+  function toggleCheck() {
+    const cb = document.getElementById('cb');
+    cb.checked = !cb.checked;
+    document.getElementById('consent-row').classList.remove('error');
+    document.getElementById('error-msg').classList.remove('show');
   }
-
-  // ── SEND EMAIL VIA FORMSPREE ───────────────────────────────────────────────
-  // Uses Formspree — free tier allows 50 submissions/month
-  // Replace YOUR_FORM_ID below after setting up at formspree.io
-  // For now it sends to manoharch0698@gmail.com via the endpoint below
-  async function sendConsentEmail(timestamp, userAgent) {
-    try {
-      await fetch('https://formspree.io/f/xpwzgejw', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          _subject: 'MedBridge Website Consent — ' + timestamp,
-          to: 'manoharch0698@gmail.com',
-          consent_1: 'Agreed — Not a medical provider + Terms of Service',
-          consent_2: 'Agreed — Privacy Policy consent',
-          consent_3: 'Agreed — 18+ years of age',
-          timestamp: timestamp,
-          user_agent: userAgent,
-          page: window.location.href,
-        })
-      });
-    } catch(e) {
-      // Silent fail — consent was recorded, email is bonus
-      console.log('Email send attempted');
-    }
-  }
-
-  // ── HANDLE CONSENT CLICK ───────────────────────────────────────────────────
   function handleConsent() {
-    const c1 = document.getElementById('c1').checked;
-    const c2 = document.getElementById('c2').checked;
-    const c3 = document.getElementById('c3').checked;
-    const errorEl = document.getElementById('error-msg');
-
-    if (!c1 || !c2 || !c3) {
-      errorEl.classList.add('show');
-      // Highlight unchecked
-      [['c1',c1],['c2',c2],['c3',c3]].forEach(([id, checked]) => {
-        const section = document.getElementById(id).closest('.consent-section');
-        section.style.borderLeftColor = checked ? 'var(--navy)' : 'var(--red)';
-      });
+    const cb = document.getElementById('cb');
+    if (!cb.checked) {
+      document.getElementById('consent-row').classList.add('error');
+      document.getElementById('error-msg').classList.add('show');
       return;
     }
-
-    errorEl.classList.remove('show');
-
-    // Show loading
-    const btn = document.getElementById('enter-btn');
+    const btn = document.getElementById('btn');
     btn.classList.add('loading');
-
-    const timestamp = getTimestamp();
-    const userAgent = navigator.userAgent;
-
-    // Store in sessionStorage so returning visitors skip gate in same session
+    const timestamp = new Date().toLocaleString('en-CA', {
+      year:'numeric', month:'long', day:'numeric',
+      hour:'2-digit', minute:'2-digit', second:'2-digit',
+      timeZoneName:'short'
+    });
     sessionStorage.setItem('medbridge_consented', 'true');
-    sessionStorage.setItem('medbridge_consent_time', timestamp);
-
-    // Send email
-    sendConsentEmail(timestamp, userAgent);
-
-    // Show success after brief delay
+    fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'MedBridge Consent — ' + timestamp,
+        agreed_to: 'Privacy Policy + Terms of Service + Not a medical provider',
+        timestamp: timestamp,
+        page: window.location.href
+      })
+    }).catch(() => {});
     setTimeout(() => {
       document.getElementById('consent-screen').style.display = 'none';
-      const successScreen = document.getElementById('success-screen');
-      successScreen.style.display = 'block';
-      document.getElementById('success-timestamp').textContent =
-        'Consent recorded: ' + timestamp;
-    }, 900);
+      document.getElementById('success-screen').style.display = 'block';
+    }, 800);
   }
-
   function enterSite() {
-    // Fade out and redirect to main site
-    document.getElementById('gate-card').style.transition = 'opacity 0.4s, transform 0.4s';
-    document.getElementById('gate-card').style.opacity = '0';
-    document.getElementById('gate-card').style.transform = 'scale(0.97)';
-    setTimeout(() => { window.location.href = 'main.html'; }, 400);
+    const card = document.getElementById('card');
+    card.style.transition = 'opacity 0.35s, transform 0.35s';
+    card.style.opacity = '0';
+    card.style.transform = 'scale(0.97)';
+    setTimeout(() => { window.location.href = 'main.html'; }, 350);
   }
-
-  // ── CHECK IF ALREADY CONSENTED THIS SESSION ────────────────────────────────
   window.addEventListener('DOMContentLoaded', () => {
-    // Only auto-skip if running on a real server (not local file)
-    const isServer = window.location.protocol === 'https:' || window.location.protocol === 'http:';
+    const isServer = location.protocol === 'https:' || location.protocol === 'http:';
     if (isServer && sessionStorage.getItem('medbridge_consented') === 'true') {
       window.location.href = 'main.html';
     }
