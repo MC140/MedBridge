@@ -462,7 +462,7 @@
     document.getElementById('gate-card').style.transition = 'opacity 0.4s, transform 0.4s';
     document.getElementById('gate-card').style.opacity = '0';
     document.getElementById('gate-card').style.transform = 'scale(0.97)';
-    setTimeout(() => { window.location.href = 'index.html'; }, 400);
+    setTimeout(() => { window.location.href = 'main.html'; }, 400);
   }
 
   // ── CHECK IF ALREADY CONSENTED THIS SESSION ────────────────────────────────
@@ -470,7 +470,7 @@
     // Only auto-skip if running on a real server (not local file)
     const isServer = window.location.protocol === 'https:' || window.location.protocol === 'http:';
     if (isServer && sessionStorage.getItem('medbridge_consented') === 'true') {
-      window.location.href = 'index.html';
+      window.location.href = 'main.html';
     }
   });
 </script>
