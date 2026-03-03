@@ -148,12 +148,19 @@
       hour:'2-digit', minute:'2-digit', second:'2-digit',
       timeZoneName:'short'
     });
-    sessionStorage.setItem('medbridge_consented', 'true');
-    emailjs.init('AJAz9caMIq_GvCjla');
-    emailjs.send('service_b2gdl8s', 'template_x5mkqvo', {
-      timestamp: timestamp,
-      page: window.location.href
-    }).catch(() => {});
+    localStorage.setItem('medbridge_consented', 'true');
+
+    // 24-hour email cooldown — stops flooding during testing
+    const lastEmail = localStorage.getItem('mb_last_email');
+    const now = Date.now();
+    if (!lastEmail || (now - parseInt(lastEmail)) > 86400000) {
+      emailjs.init('AJAz9caMIq_GvCjla');
+      emailjs.send('service_b2gdl8s', 'template_x5mkqvo', {
+        timestamp: timestamp,
+        page: window.location.href
+      }).catch(() => {});
+      localStorage.setItem('mb_last_email', now.toString());
+    }
     setTimeout(() => {
       document.getElementById('consent-screen').style.display = 'none';
       document.getElementById('success-screen').style.display = 'block';
@@ -168,7 +175,7 @@
   }
   window.addEventListener('DOMContentLoaded', () => {
     const isServer = location.protocol === 'https:' || location.protocol === 'http:';
-    if (isServer && sessionStorage.getItem('medbridge_consented') === 'true') {
+    if (isServer && localStorage.getItem('medbridge_consented') === 'true') {
       window.location.href = 'main.html';
     }
   });
