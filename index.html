@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -58,8 +59,8 @@
     }
     .consent-row:hover { border-color: #C9A84C; border-left-color: #C9A84C; }
     .consent-row.error { border-color: #C0392B; border-left-color: #C0392B; background: #FEF2F2; }
-    .consent-row input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; accent-color: #0B1F3A; cursor: pointer; }
-    .consent-row label { font-size: 0.85rem; line-height: 1.6; color: #2D3748; cursor: pointer; }
+    .consent-row input[type="checkbox"] { width: 22px; height: 22px; min-width: 22px; flex-shrink: 0; accent-color: #0B1F3A; cursor: pointer; }
+    .consent-row label { font-size: 0.85rem; line-height: 1.6; color: #2D3748; cursor: pointer; display: block; width: 100%; }
     .consent-row label a { color: #0B1F3A; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
     .consent-row label a:hover { color: #C9A84C; }
     .error-msg { display: none; font-size: 0.78rem; color: #C0392B; font-weight: 700; margin: -12px 0 14px 2px; }
@@ -99,8 +100,8 @@
       <p>HealPath Global Concierge Inc. — Ontario, Canada</p>
     </div>
     <div class="card-body">
-      <div class="consent-row" id="consent-row" onclick="toggleCheck()">
-        <input type="checkbox" id="cb">
+      <div class="consent-row" id="consent-row">
+        <input type="checkbox" id="cb" onchange="document.getElementById('consent-row').classList.remove('error')">
         <label for="cb">
           By continuing, I confirm I have read and agree to the
           <a href="privacy.html" target="_blank" onclick="event.stopPropagation()">Privacy Policy</a>
@@ -128,7 +129,7 @@
   </div>
 </div>
 <script>
-  function toggleCheck() {
+  function toggleCheck() { // no longer used but kept for safety
     const cb = document.getElementById('cb');
     cb.checked = !cb.checked;
     document.getElementById('consent-row').classList.remove('error');
@@ -150,35 +151,39 @@
     });
     localStorage.setItem('medbridge_consented', 'true');
 
-    // 24-hour email cooldown — stops flooding during testing
-    const lastEmail = localStorage.getItem('mb_last_email');
-    const now = Date.now();
-    if (!lastEmail || (now - parseInt(lastEmail)) > 86400000) {
-      emailjs.init('AJAz9caMIq_GvCjla');
-      emailjs.send('service_b2gdl8s', 'template_x5mkqvo', {
-        timestamp: timestamp,
-        page: window.location.href
-      }).catch(() => {});
-      localStorage.setItem('mb_last_email', now.toString());
-    }
-    setTimeout(() => {
-      document.getElementById('consent-screen').style.display = 'none';
-      document.getElementById('success-screen').style.display = 'block';
-    }, 800);
-  }
-  function enterSite() {
-    const card = document.getElementById('card');
-    card.style.transition = 'opacity 0.35s, transform 0.35s';
-    card.style.opacity = '0';
-    card.style.transform = 'scale(0.97)';
-    setTimeout(() => { window.location.href = 'main.html'; }, 350);
-  }
-  window.addEventListener('DOMContentLoaded', () => {
-    const isServer = location.protocol === 'https:' || location.protocol === 'http:';
-    if (isServer && localStorage.getItem('medbridge_consented') === 'true') {
-      window.location.href = 'main.html';
-    }
-  });
+```
+// 24-hour email cooldown — stops flooding during testing
+const lastEmail = localStorage.getItem('mb_last_email');
+const now = Date.now();
+if (!lastEmail || (now - parseInt(lastEmail)) > 86400000) {
+  emailjs.init('AJAz9caMIq_GvCjla');
+  emailjs.send('service_b2gdl8s', 'template_x5mkqvo', {
+    timestamp: timestamp,
+    page: window.location.href
+  }).catch(() => {});
+  localStorage.setItem('mb_last_email', now.toString());
+}
+setTimeout(() => {
+  document.getElementById('consent-screen').style.display = 'none';
+  document.getElementById('success-screen').style.display = 'block';
+}, 800);
+```
+
+}
+function enterSite() {
+const card = document.getElementById(‘card’);
+card.style.transition = ‘opacity 0.35s, transform 0.35s’;
+card.style.opacity = ‘0’;
+card.style.transform = ‘scale(0.97)’;
+setTimeout(() => { window.location.href = ‘main.html’; }, 350);
+}
+window.addEventListener(‘DOMContentLoaded’, () => {
+const isServer = location.protocol === ‘https:’ || location.protocol === ‘http:’;
+if (isServer && localStorage.getItem(‘medbridge_consented’) === ‘true’) {
+window.location.href = ‘main.html’;
+}
+});
 </script>
+
 </body>
 </html>
