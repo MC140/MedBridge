@@ -125,16 +125,10 @@
     <div class="success-icon">✓</div>
     <h3>You're All Set</h3>
     <p>Your acknowledgment has been recorded.<br>Welcome to HealPath Global.</p>
-    <button class="success-btn" onclick="enterSite()">Enter Website →</button>
+    <button class="success-btn" onclick="window.location.href='main.html'">Enter Website →</button>
   </div>
 </div>
 <script>
-  function toggleCheck() { // no longer used but kept for safety
-    const cb = document.getElementById('cb');
-    cb.checked = !cb.checked;
-    document.getElementById('consent-row').classList.remove('error');
-    document.getElementById('error-msg').classList.remove('show');
-  }
   function handleConsent() {
     const cb = document.getElementById('cb');
     if (!cb.checked) {
@@ -142,40 +136,38 @@
       document.getElementById('error-msg').classList.add('show');
       return;
     }
-    const btn = document.getElementById('btn');
-    btn.classList.add('loading');
-    const timestamp = new Date().toLocaleString('en-CA', {
-      year:'numeric', month:'long', day:'numeric',
-      hour:'2-digit', minute:'2-digit', second:'2-digit',
-      timeZoneName:'short'
-    });
+    // Save consent
     localStorage.setItem('medbridge_consented', 'true');
 
 ```
-// 24-hour email cooldown — stops flooding during testing
+const btn = document.getElementById('btn');
+btn.classList.add('loading');
+
+// Email notification with 24hr cooldown
 const lastEmail = localStorage.getItem('mb_last_email');
 const now = Date.now();
 if (!lastEmail || (now - parseInt(lastEmail)) > 86400000) {
-  emailjs.init('AJAz9caMIq_GvCjla');
-  emailjs.send('service_b2gdl8s', 'template_x5mkqvo', {
-    timestamp: timestamp,
-    page: window.location.href
-  }).catch(() => {});
+  const timestamp = new Date().toLocaleString('en-CA', {
+    year:'numeric', month:'long', day:'numeric',
+    hour:'2-digit', minute:'2-digit', second:'2-digit',
+    timeZoneName:'short'
+  });
+  try {
+    emailjs.init('AJAz9caMIq_GvCjla');
+    emailjs.send('service_b2gdl8s', 'template_x5mkqvo', {
+      timestamp: timestamp,
+      page: window.location.href
+    }).catch(() => {});
+  } catch(e) {}
   localStorage.setItem('mb_last_email', now.toString());
 }
+
+// Go directly to main site after short delay
 setTimeout(() => {
-  document.getElementById('consent-screen').style.display = 'none';
-  document.getElementById('success-screen').style.display = 'block';
-}, 800);
+  window.location.href = 'main.html';
+}, 600);
 ```
 
-}
-function enterSite() {
-const card = document.getElementById(‘card’);
-card.style.transition = ‘opacity 0.35s, transform 0.35s’;
-card.style.opacity = ‘0’;
-card.style.transform = ‘scale(0.97)’;
-setTimeout(() => { window.location.href = ‘main.html’; }, 350);
 }
 window.addEventListener(‘DOMContentLoaded’, () => {
 const isServer = location.protocol === ‘https:’ || location.protocol === ‘http:’;
